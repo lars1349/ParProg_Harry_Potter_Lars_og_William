@@ -11,3 +11,28 @@ Trylleformler:
 vingardium leviosa (får en fjær til å fly)
 hokus pokus (fyrer av fyrverkerier)
  */
+
+while(true)
+{
+    Console.WriteLine(
+        $"[1] Wizzard info\n" +
+        $"[2] Go to Magic store\n" +
+        $"[3] Cast a spell\n" +
+        $"[4] Create a new Wizzard\n" +
+        $"[5] Quit\n");
+    var input = Console.ReadLine();
+
+    switch(input)
+    {
+        case "1":
+            break;
+        case "2":
+            break;
+        case "3":
+            break;
+        case "4":
+            break;
+        case "5":
+            break;
+    }
+}
