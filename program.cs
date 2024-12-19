@@ -1,38 +1,65 @@
-﻿/*
-1) Harry Pottah🥳l33t haxx0r
-Du skal starte med å lage en harrypotter character klasse med egenskaper som navn, house, inventory (ex wand eller pet)
-Få applikasjonen til å printe ut en introduksjon for karakteren, som sier noe om hva de heter, hvilket hus de er medlem av og hvilke items de har
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-Karakteren skal ha mulighet til å gå inn i en Magibutikk, der kan de kjøpe et dyr:  ugle,rotte eller en katt. 
-De har også mulighet til å kjøpe en tryllestav: føniksstav, unikornstav eller trollstav. For å få til dette må du lage en egen klasse som er butikken, og presentere brukeren med en meny for hva personen skal kjøpe.
-
-Karakteren skal ha mulighet til å trylle - ta inn input fra brukeren, og dersom en skriver en riktig trylleformel skal det printes til skjermen at de har utført tryllingen
-Trylleformler: 
-vingardium leviosa (får en fjær til å fly)
-hokus pokus (fyrer av fyrverkerier)
- */
-
-while(true)
+namespace ParProg_Harry_Potter_Lars_og_William
 {
-    Console.WriteLine(
-        $"[1] Wizzard info\n" +
-        $"[2] Go to Magic store\n" +
-        $"[3] Cast a spell\n" +
-        $"[4] Create a new Wizzard\n" +
-        $"[5] Quit\n");
-    var input = Console.ReadLine();
-
-    switch(input)
+    internal class MagicShop
     {
-        case "1":
-            break;
-        case "2":
-            break;
-        case "3":
-            break;
-        case "4":
-            break;
-        case "5":
-            break;
+        public MagicShop(Wizard wizard)
+        {
+            Wizard = wizard;
+        }
+
+        public Wizard Wizard { get; set; }
+
+        private string[] _wands = { "Phoenix Wand", "Unicorn Wand", "Wand of Troll" };
+        private string[] _pets = { "Cat", "Owl", "Rat" };
+
+
+        public void Shop()
+        {
+            Console.WriteLine("What do you want to buy?");
+            Console.WriteLine("[1] Wand \n[2] Pet\n[3] Leave store");
+            var input = Console.ReadLine();
+            switch(input)
+            {
+                case "1":
+                    Wands();
+                    break;
+                case "2":
+                    Pets();
+                    break;
+                case "3":
+                    break;
+            }
+
+        }
+
+        public void Wands()
+        {
+            for (int i = 0; i < _wands.Length; i++)
+            {
+                Console.WriteLine($"[{i + 1}] {_wands[i]}");
+            }
+            var newWand = Convert.ToInt32(Console.ReadLine()) - 1;
+            Wizard.Inventory[0] = _wands[newWand];
+            Shop();
+        }
+
+        public void Pets()
+        {
+            for (int i = 0; i < _pets.Length; i++)
+            {
+                Console.WriteLine($"[{i + 1}] {_pets[i]}");
+            }
+            var newPet = Convert.ToInt32(Console.ReadLine()) - 1;
+            Wizard.Inventory[1] = _pets[newPet];
+            Shop();
+        }
+
+
     }
 }
